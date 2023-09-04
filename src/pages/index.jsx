@@ -1,14 +1,17 @@
 import React from 'react';
 import RootLayout from '../app/layout';
-import { Box, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 
 
 const home = () => {
+    const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   return (
     <RootLayout>
-        <div>
-            <h1>Home</h1>
-        </div>
+        <Box>
+        <Typography>
+            Home
+        </Typography>
+        </Box>
     </RootLayout>
   )
 }
