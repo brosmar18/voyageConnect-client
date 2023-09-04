@@ -1,5 +1,7 @@
 import React from 'react';
-import RootLayout from '@/app/layout';
+import RootLayout from '../app/layout';
+import { Box, useMediaQuery } from '@mui/material';
+
 
 const home = () => {
   return (
