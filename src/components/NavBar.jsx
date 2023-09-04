@@ -40,6 +40,8 @@ const NavBar = () => {
                 <LightMode />
             </IconButton>
             <Message />
+            <Notifications />
+            <Help />
         </FlexBetween>
     </FlexBetween>
   )
