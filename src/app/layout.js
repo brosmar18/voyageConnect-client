@@ -16,12 +16,27 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
+const persistConfig = { key: "root", storage, version: 1 };
+const persistedReducer = persistReducer(persistConfig, authReducer);
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
 
 export default function RootLayout({ children }) {
   return (
     <>
-      <NavBar />
-      {children}
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistStore(store)}>
+          <NavBar />
+          {children}
+        </PersistGate>
+      </Provider>
     </>
   );
 }
